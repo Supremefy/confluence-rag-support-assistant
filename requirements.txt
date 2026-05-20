@@ -1,0 +1,9 @@
+fastapi==0.115.6
+uvicorn[standard]==0.47.0
+python-dotenv==1.2.2
+pydantic==2.13.4
+pydantic-settings==2.14.1
+openai==1.57.4
+chromadb==1.5.9
+beautifulsoup4==4.12.3
+pytest==8.3.4

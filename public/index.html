@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support Knowledge Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <main class="shell">
+      <section class="workspace">
+        <div class="panel query-panel">
+          <div class="topbar">
+            <div>
+              <p class="eyebrow">Support RAG Demo</p>
+              <h1>Support Knowledge Assistant</h1>
+            </div>
+            <div class="button-row">
+              <button id="ingestBtn" type="button">Ingest Sample Docs</button>
+              <button id="ingestConfluenceBtn" type="button">Ingest Confluence</button>
+            </div>
+          </div>
+
+          <label for="question">Customer Question</label>
+          <textarea id="question" rows="8">The customer purchased 10 days ago and already used the service. Can we offer a full refund?</textarea>
+
+          <div class="controls">
+            <label for="tone">Reply Tone</label>
+            <select id="tone">
+              <option value="calm">Calm</option>
+              <option value="concise">Concise</option>
+              <option value="formal">Formal</option>
+            </select>
+            <button id="askBtn" type="button">Generate Draft Reply</button>
+          </div>
+        </div>
+
+        <div class="panel answer-panel">
+          <div class="answer-header">
+            <h2>Suggested Result</h2>
+            <span id="status">Ready</span>
+          </div>
+          <pre id="answer">Ingest the sample documents, enter a customer question, and generate a draft reply.</pre>
+        </div>
+      </section>
+
+      <section class="sources">
+        <h2>Internal Evidence</h2>
+        <div id="sources"></div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
