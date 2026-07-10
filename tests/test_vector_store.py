@@ -13,9 +13,13 @@ class VectorStoreTests(unittest.TestCase):
     def test_clear_removes_existing_records(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             settings = Settings(
+                ai_provider="mock",
                 openai_api_key=None,
                 openai_chat_model="mock",
                 openai_embedding_model="mock",
+                gemini_api_key=None,
+                gemini_chat_model="mock",
+                gemini_embedding_model="mock",
                 vector_store_dir=Path(tmpdir),
                 vector_store_backend="json",
                 use_mock_ai=True,
@@ -93,9 +97,13 @@ class VectorStoreTests(unittest.TestCase):
 
 def _settings(path: Path, backend: str) -> Settings:
     return Settings(
+        ai_provider="mock",
         openai_api_key=None,
         openai_chat_model="mock",
         openai_embedding_model="mock",
+        gemini_api_key=None,
+        gemini_chat_model="mock",
+        gemini_embedding_model="mock",
         vector_store_dir=path,
         vector_store_backend=backend,
         use_mock_ai=True,

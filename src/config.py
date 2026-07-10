@@ -18,9 +18,13 @@ def _load_dotenv(path: Path = Path(".env")) -> None:
 
 @dataclass
 class Settings:
+    ai_provider: str
     openai_api_key: str | None
     openai_chat_model: str
     openai_embedding_model: str
+    gemini_api_key: str | None
+    gemini_chat_model: str
+    gemini_embedding_model: str
     vector_store_dir: Path
     vector_store_backend: str
     use_mock_ai: bool
@@ -36,10 +40,16 @@ class Settings:
 def get_settings() -> Settings:
     _load_dotenv()
     return Settings(
+        ai_provider=os.getenv("AI_PROVIDER", "openai").lower(),
         openai_api_key=os.getenv("OPENAI_API_KEY") or None,
         openai_chat_model=os.getenv("OPENAI_CHAT_MODEL", "gpt-4.1-mini"),
         openai_embedding_model=os.getenv(
             "OPENAI_EMBEDDING_MODEL", "text-embedding-3-small"
+        ),
+        gemini_api_key=os.getenv("GEMINI_API_KEY") or None,
+        gemini_chat_model=os.getenv("GEMINI_CHAT_MODEL", "gemini-3.5-flash"),
+        gemini_embedding_model=os.getenv(
+            "GEMINI_EMBEDDING_MODEL", "gemini-embedding-001"
         ),
         vector_store_dir=Path(os.getenv("VECTOR_STORE_DIR", ".vector-store")),
         vector_store_backend=os.getenv("VECTOR_STORE_BACKEND", "chroma").lower(),
